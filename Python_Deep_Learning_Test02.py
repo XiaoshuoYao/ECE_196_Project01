@@ -10,19 +10,19 @@ from matplotlib import pyplot as plt
 
  
 columns = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]#represents the columns of selected features and labels 
-datas = pd.read_csv( 'C:/Users/twovo/Desktop/GrandMaster_Ranked_Games.csv' )#read data as dataframe object
+datas = pd.read_csv( 'C:/Users/twovo/Desktop/Master_Ranked_Games.csv' )#read data as dataframe object
 #seperate the data set for training and testing
-data_array = datas.iloc[:8000, columns].values 
-test_data_array = datas.iloc[8001:, columns].values
+data_array = datas.iloc[:80000, columns].values 
+test_data_array = datas.iloc[80001:, columns].values
 #create ndarray for features&labels
 features = nd.array(data_array[:,1:], ctx=mx.gpu(0))
 labels = nd.array(data_array[:,0], ctx=mx.gpu(0))
 test_features = nd.array(test_data_array[:,1:], ctx=mx.gpu(0))
 test_labels = nd.array(test_data_array[:,0], ctx=mx.gpu(0))
 #define batch size, learning rate and epoch times
-batch_size = 100
+batch_size = 1000
 lr = 0.00002
-num_epochs = 4000
+num_epochs = 10000
 
 #data iterater 
 #randomly select samples from training set and
